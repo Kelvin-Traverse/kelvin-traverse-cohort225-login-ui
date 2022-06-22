@@ -1,0 +1,139 @@
+:root {
+    --color-main: #3c009c;
+    --color-accent: #ec7c10;
+}
+
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    background: linear-gradient(60deg, var(--color-main), var(--color-accent));
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background::before {
+    position: absolute;
+    content: "";
+    width: 24rem;
+    height: 24rem;
+    top: -12rem;
+    right: -10rem;
+    border-radius: 100%;
+    background: #ff9e1f31;
+    z-index: -1;
+}
+
+.background::after {
+    position: absolute;
+    content: "";
+    width: 16rem;
+    height: 16rem;
+    left: 1rem;
+    bottom: -10rem;
+    background: #ff9e1f31;
+    transform: rotate(35deg);
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 25rem; /*fallback*/
+    width: min(25rem, 100vw);
+    min-width: 220px;
+    min-height: 20rem;
+    border-radius: 24px;
+    padding: 36px; /*fallback*/
+    padding: 36px clamp(16px, calc(36px + (100% - 25rem) / 4), 36px);
+    background: #fff;
+    box-shadow: 0 6px 10px #0004;
+}
+
+.login-header {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    color: #aaa;
+    font-size: 1.25rem;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-input {
+    border: 0;
+    padding: 4px;
+    font-size: 1.25rem;
+    box-shadow: 0 1px #aaa;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.input-group .login-input:focus + label,
+.input-group .login-input:not(:placeholder-shown) + label {
+    position: absolute;
+    top: calc(1.25rem + 16px);
+    left: 4px;
+    font-size: 0.75rem;
+    cursor: auto;
+}
+
+.login-input:focus {
+    outline: none;
+    box-shadow: 0 3px var(--color-accent);
+}
+
+.login-button {
+    height: 3.5rem;
+    border: 0;
+    border-radius: 1.75rem;
+    background: var(--color-main);
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px #0004;
+    transition: outline 0.2s ease-in-out;
+}
+
+.login-button:active {
+    box-shadow: none;
+    transform: scale(0.975);
+}
+
+.login-button:focus-visible {
+    outline: var(--color-accent) solid 3px;
+}
